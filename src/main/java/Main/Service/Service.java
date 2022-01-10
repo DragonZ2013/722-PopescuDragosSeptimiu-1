@@ -15,14 +15,11 @@ public class Service {
                 ).toList();
     }
 
-    public String topPlacesByIncome(List<Offer> liste) {
-        Map.Entry<Place, Double> maxIncome = liste.stream()
-                .collect(Collectors.groupingBy(Offer::getPlace, Collectors.summingDouble(Offer::getCost)))
-                .entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .orElseThrow(NullPointerException::new);
+    public Map<Place,Double> topPlacesByIncome(List<Offer> liste) {
+        Map<Place, Double> maxIncome = liste.stream()
+                .collect(Collectors.groupingBy(Offer::getPlace, Collectors.summingDouble(Offer::getCost)));
 
-        return maxIncome.getKey() + ": " + maxIncome.getValue();
+        return maxIncome;
     }
     private int compareVat(double v, double v1) {
         if(v>v1)

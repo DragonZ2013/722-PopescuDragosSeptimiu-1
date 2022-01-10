@@ -6,6 +6,7 @@ import Main.Place;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FileRepo {
     public List<Offer> readFromFile(String fileName, String character) throws IOException {
@@ -29,6 +30,17 @@ public class FileRepo {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
         for (Offer offer : liste) {
             String line = offer.getId() + character + offer.getName() + character + offer.getCost() + character + offer.getVat() + character + offer.getAddress() + character + offer.getPlace();
+            bufferedWriter.write(line);
+            bufferedWriter.newLine();
+        }
+
+        bufferedWriter.close();
+    }
+
+    public void writeToFileStatistics(String fileName, Map<Place,Double> liste, String character) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+        for (Map.Entry<Place, Double> entry : liste.entrySet()) {
+            String line = entry.getKey() + character + entry.getValue();
             bufferedWriter.write(line);
             bufferedWriter.newLine();
         }

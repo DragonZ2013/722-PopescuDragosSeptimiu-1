@@ -30,6 +30,7 @@ public class Main {
 
                 System.out.println(service.topPlacesByIncome(offers));
                 fileRepo.writeToFile("kundensortiert.txt",sortedOffers, "&");
+                fileRepo.writeToFileStatistics("statistik.txt",service.topPlacesByIncome(offers), ":");
 
             } catch (IOException e) {
                 e.printStackTrace();
