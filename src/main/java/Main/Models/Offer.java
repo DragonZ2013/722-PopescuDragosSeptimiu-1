@@ -69,6 +69,9 @@ public class Offer {
         this.place = place;
     }
 
+    public double getCost(){
+        return price+vat*price/100;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -88,6 +91,17 @@ public class Offer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
+                ", vat=" + vat +
+                ", address='" + address + '\'' +
+                ", place=" + place +
+                '}';
+    }
+
+    public String toStringOut() {
+        return "Offer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + (price+vat*price/100) +
                 ", vat=" + vat +
                 ", address='" + address + '\'' +
                 ", place=" + place +

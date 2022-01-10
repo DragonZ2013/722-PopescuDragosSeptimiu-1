@@ -3,9 +3,7 @@ package Main.Repo;
 import Main.Models.Offer;
 import Main.Place;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,4 +24,17 @@ public class FileRepo {
 
         return listeTiere;
     }
+
+    public void writeToFile(String fileName, List<Offer> liste, String character) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+        for (Offer offer : liste) {
+            String line = offer.getId() + character + offer.getName() + character + offer.getCost() + character + offer.getVat() + character + offer.getAddress() + character + offer.getPlace();
+            bufferedWriter.write(line);
+            bufferedWriter.newLine();
+        }
+
+        bufferedWriter.close();
+    }
+
+
 }

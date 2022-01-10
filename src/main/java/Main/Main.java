@@ -25,8 +25,11 @@ public class Main {
                 }
                 sortedOffers=service.sortOfferListByPrice(offers);
                 for(Offer offer:sortedOffers){
-                    System.out.println(offer.toString());
+                    System.out.println(offer.toStringOut());
                 }
+
+                System.out.println(service.topPlacesByIncome(offers));
+                fileRepo.writeToFile("kundensortiert.txt",sortedOffers, "&");
 
             } catch (IOException e) {
                 e.printStackTrace();
