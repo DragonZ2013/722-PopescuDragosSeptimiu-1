@@ -9,6 +9,13 @@ import java.util.List;
 import java.util.Map;
 
 public class FileRepo {
+    /**
+     * reads Offer objects from file with character separator
+     * @param fileName
+     * @param character
+     * @return
+     * @throws IOException
+     */
     public List<Offer> readFromFile(String fileName, String character) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
         String line = bufferedReader.readLine();
@@ -26,6 +33,13 @@ public class FileRepo {
         return listeTiere;
     }
 
+    /**
+     * writes offer objects to file with total cost instead of price, with separator
+     * @param fileName
+     * @param liste
+     * @param character
+     * @throws IOException
+     */
     public void writeToFile(String fileName, List<Offer> liste, String character) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
         for (Offer offer : liste) {
@@ -37,6 +51,13 @@ public class FileRepo {
         bufferedWriter.close();
     }
 
+    /**
+     * writes statistic type objects (Map) to file with separator
+     * @param fileName
+     * @param liste
+     * @param character
+     * @throws IOException
+     */
     public void writeToFileStatistics(String fileName, Map<Place,Double> liste, String character) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
         for (Map.Entry<Place, Double> entry : liste.entrySet()) {

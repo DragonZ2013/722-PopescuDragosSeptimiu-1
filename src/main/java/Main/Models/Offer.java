@@ -12,6 +12,15 @@ public class Offer {
     private String address;
     private Place place;
 
+    /**
+     * Constructor for offer objects
+     * @param id
+     * @param name
+     * @param price
+     * @param vat
+     * @param address
+     * @param place
+     */
     public Offer(int id, String name, double price, double vat, String address, Place place) {
         this.id = id;
         this.name = name;
@@ -97,6 +106,10 @@ public class Offer {
                 '}';
     }
 
+    /**
+     * String conversion with cost value
+     * @return
+     */
     public String toStringOut() {
         return "Offer{" +
                 "id=" + id +
